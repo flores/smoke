@@ -1,6 +1,6 @@
 # smoke
 
-super simple/weak shell harness for tests
+super simple harness for your smoke tests
 
 ## running it
 
