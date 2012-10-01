@@ -1,6 +1,6 @@
 # smoke
 
-super simple/weak shell harness for tests
+super simple harness for your smoke tests
 
 ![smoke screenshot](http://tonina.petalphile.com/stuff/smoke.png)
 
