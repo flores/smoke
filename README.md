@@ -2,6 +2,8 @@
 
 super simple/weak shell harness for tests
 
+![smoke screenshot](http://tonina.petalphile.com/stuff/smoke.png)
+
 ## running it
 
 ```
