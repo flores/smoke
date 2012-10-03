@@ -1,7 +1,7 @@
 #!/bin/bash
 
-connections=`netstat -ano |egrep '^:80$'`;
-if [ $SIMULTANEOUS -lt 1 ]; then
+connections=`netstat -ano |egrep -c '^:80$'`;
+if [ $connections -lt 1 ]; then
 	echo "status err no server listening!"
 	exit 1
 else
