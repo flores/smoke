@@ -4,9 +4,9 @@ smoke.sh runs smoke tests on your box\n
 usage: smoke.sh <option>\n
 \n
 where option can be:\n
-\t-l <file> :silently write logs to <file>\n
-\t-f :only output failures\n
-\t-d <directory> :runs tests in <directory>\n
+\t-l <file> :silently write logs to <file>. default: /var/log/smoke.log\n
+\t-f :only output failures. default: not set\n
+\t-d <directory> :runs tests in <directory>. default: tests/\n
 \t-h :prints this message\n
 EOF
 `
