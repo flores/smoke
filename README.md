@@ -34,9 +34,10 @@ smoke.sh runs smoke tests on your box
 just add your script into smoke/tests (or any directory called by the `-d` option above)!  Your test must:
 
 * be executable
-* exit non-0 if it fails
-* be prepended with a number if you'd like to run in a certain order.
-  * for example, 010-script will run before 050-script
-  * a_script will run before b_script
+* exit 0 for a passed test and exit non-0 for a failed test
+* use init-style naming if you'd like to run in a certain order.  For example:
+  * `010-script` will run before `050-script`
+  * `050-script` will run before `a_script`
+  * `a_script` will run before `b_script`
 
 that's it!
