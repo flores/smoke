@@ -1,37 +1,38 @@
 #!/bin/bash
-usage=` cat <<END
-${basename $0} runs smoke tests on your box\n
-usage: ${basename $0} <option>\n
+usage=`cat <<EOF
+smoke.sh runs smoke tests on your box\n
+usage: smoke.sh <option>\n
+\n
 where option can be:\n
-  --log|-l <file> :silently write logs to <file\n
-  --failures|-f :only output failures\n
-  --directory|-d <directory> :run tests in <directory>\n
-  --help|-h prints this message\n
-END`
+\t-l <file> :silently write logs to <file>\n
+\t-f :only output failures\n
+\t-d <directory> :runs tests in <directory>\n
+\t-h :prints this message\n
+EOF
+`
 
 test_dir="tests"
 output_failure="/dev/stdout"
 output_standard="/dev/stdout"
 
-set -- $(getopt "l:d:hfa" -- "$@")
 
-while [ $# -gt 0 ]; do
-  case "$1" in
-  -l|--log)
-    output_failure="${OPTARG}"
-    output_standard="${OPTARG}"
+while getopts "l:d:hfa" OPTION; do
+  case $OPTION in
+  l)
+    output_failure=$OPTARG
+    output_standard=$OPTARG
     ;;
-  -f|--failures)
+  f)
     output_standard="/dev/null"
     ;;
-  -d|--directory)
-    test_dir="${OPTARG}"
+  d)
+    test_dir=$OPTARG
     ;;
-  -h|--help|\?)
+  h)
     echo -e $usage
     exit 1
     ;;
-  -a|--logall)
+  a)
     output_failure="/var/log/smoke.log"
     output_standard="/var/log/smoke.log"
     ;;
@@ -41,10 +42,10 @@ done
 
 exit=0
 
-for test in tests/*; do
+for test in `ls $test_dir`; do
   echo "running $test..." &> $output_standard
   #readlink -f $i
-  $test &> $output_standard
+  $test_dir/$test &> $output_standard
 
   status=$?
 
