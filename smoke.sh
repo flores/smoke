@@ -1,15 +1,16 @@
 #!/bin/bash
-usage=`cat <<EOF
-smoke.sh runs smoke tests on your box\n
-usage: smoke.sh <option>\n
-\n
-where option can be:\n
-\t-l <file> :silently write logs to <file>. default: /var/log/smoke.log\n
-\t-f :only output failures. default: not set\n
-\t-d <directory> :runs tests in <directory>. default: tests/\n
-\t-h :prints this message\n
+usage() { 
+  cat <<EOF
+smoke.sh runs smoke tests on your box
+usage: smoke.sh <option>
+
+where option can be:
+  -l <file> :silently write logs to <file>. default: /var/log/smoke.log
+  -f :only output failures. default: not set
+  -d <directory> :runs tests in <directory>. default: tests/
+  -h :prints this message
 EOF
-`
+}
 
 test_dir="tests"
 output_failure="/dev/stdout"
@@ -29,7 +30,7 @@ while getopts "l:d:hfa" OPTION; do
     test_dir=$OPTARG
     ;;
   h)
-    echo -e $usage
+    usage
     exit 1
     ;;
   a)
