@@ -16,6 +16,9 @@ test_dir="tests"
 output_failure="/dev/stdout"
 output_standard="/dev/stdout"
 
+color_red='\e[0;31m'
+color_green='\e[0;32m'
+color_clear='\e[0m'
 
 while getopts "l:d:hfa" OPTION; do
   case $OPTION in
@@ -52,20 +55,20 @@ for test in `ls $test_dir`; do
 
   if test $status -ne 0; then
     exit=1
-    echo "^[[0;31;40m
+    echo -e "${color_red}
 
 =========================
 FAIL: $test exited status $status!
 =========================
-^[[0;;m" &> $output_failure
+${color_clear}" &> $output_failure
 
   else
-    echo "^[[0;32;40m
+    echo -e "${color_green}
 
 =========================
 PASS: $test OK
 =========================
-^[[0;;m" &> $output_standard
+${color_clear}" &> $output_standard
   fi
 
 done
