@@ -12,7 +12,7 @@ where option can be:
 EOF
 }
 
-test_dir="tests"
+test_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/tests"
 output_failure="/dev/stdout"
 output_standard="/dev/stdout"
 
