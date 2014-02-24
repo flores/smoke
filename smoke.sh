@@ -13,7 +13,7 @@ EOF
 }
 
 test_dir="tests"
-output_failure="/dev/stdout"
+output_failure="/dev/stderr"
 output_standard="/dev/stdout"
 
 color_red='\e[0;31m'
