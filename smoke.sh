@@ -6,7 +6,7 @@ usage: smoke.sh <option>
 
 where option can be:
   -l <file> :silently write logs to <file>. default: /var/log/smoke.log
-  -f :only output failures. default: not set
+  -f :only output failures. default: false
   -d <directory> :runs tests in <directory>. default: tests/
   -h :prints this message
 EOF
