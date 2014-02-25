@@ -17,9 +17,9 @@ test_dir="$(dirname $0)/tests"
 output_failure="/dev/stderr"
 output_standard="/dev/stdout"
 
-color_red='\e[0;31m'
-color_green='\e[0;32m'
-color_clear='\e[0m'
+color_red=$(tput setaf 1)
+color_green=$(tput setaf 2)
+color_clear=$(tput sgr0)
 
 while getopts "l:d:hfa" OPTION; do
   case $OPTION in
