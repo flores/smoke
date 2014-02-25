@@ -12,7 +12,8 @@ where option can be:
 EOF
 }
 
-test_dir="tests"
+test_dir="$(dirname $0)/tests"
+
 output_failure="/dev/stderr"
 output_standard="/dev/stdout"
 
