@@ -47,7 +47,7 @@ done
 
 exit=0
 
-for test in `ls $test_dir`; do
+for test in `/bin/ls $test_dir`; do
   echo "running $test..." &> $output_standard
   #readlink -f $i
   $test_dir/$test &> $output_standard
