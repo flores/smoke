@@ -48,7 +48,7 @@ done
 exit=0
 
 display_result () {
-  test=$1
+  testname=$1
   status=$2
 
   header="========================="
@@ -57,21 +57,20 @@ display_result () {
   output+="%s: %s %s %s\n"
   output+="${header}${color_clear}\n"
 
-  if [ $status -ne 0 ]; then
-    printf "$output" $color_red "FAIL" $test "exited status" $status
+  if [[ $status -ne 0 ]]; then
+    printf "$output" $color_red "FAIL" $testname "exited status" $status
   else
-    printf "$output" $color_green "PASS" $test "OK"  ""
+    printf "$output" $color_green "PASS" $testname "OK"  ""
   fi
 }
 
-for test in `/bin/ls $test_dir`; do
-  echo "running $test..." &> $output_standard
-  #readlink -f $i
-  $test_dir/$test &> $output_standard
+for testname in $(/bin/ls $test_dir); do
+  echo "running $testname..." &> $output_standard
+  $test_dir/$testname &> $output_standard
 
   status=$?
 
-  display_result $test $status
+  display_result $testname $status
 
 done
 
